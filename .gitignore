@@ -1,4 +1,24 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+**/.idea/
+
+# Angular
+dist/
+**/dist/
+.angular/
+**/.angular/
+
 
 # Compiled output
 /dist
