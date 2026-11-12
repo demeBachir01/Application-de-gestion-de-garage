@@ -1,0 +1,95 @@
+<app-nave-bar></app-nave-bar>
+
+<div class="container">
+  <div id="connexion">
+    <h1 class="title">Hellø Wørld</h1>
+    <p class="paragraphe">
+      Veuillez entrer vos détails personnel et démarrez votre journée sur Hellø Wørld
+    </p>
+    <a href="#" class="btn-link connexion">Se connecter</a>
+  </div>
+  <div id="inscription">
+    <h1 class="title">Créer un compte</h1>
+    <p class="paragraphe">
+      Veuillez remplir tous les champs
+    </p>
+
+    <form class="formulaire" #userForm="ngForm" (ngSubmit)="registerUser()">
+      <div class="group-form">
+        <!-- <span class="text-danger">*</span> -->
+        <input type="text" name="prenom" required [class.is-invalid]="prenom.invalid && prenom.touched "
+        [class.is-valid]="prenom.valid" #prenom="ngModel" [(ngModel)]="user.prenom" tabindex="1"
+        class="form-control" placeholder="Prenom" value="">
+      <small class="text-danger" [class.d-none]=" prenom.untouched || prenom.valid"> Veuillez saisir votre prenom
+      </small>
+      <div class="icon-user"></div>
+      </div>
+      <div class="group-form">
+        <!-- <span class="text-danger">*</span> -->
+        <input type="text" name="nom" id="nom" required [class.is-invalid]="nom.invalid && nom.touched "
+          [class.is-valid]="nom.valid" #nom="ngModel" [(ngModel)]="user.nom" tabindex="2" class="form-control"
+          placeholder="Nom">
+        <small class="text-danger" [class.d-none]=" nom.untouched || nom.valid"> Veuillez saisir votre nom </small>
+        <div class="icon-user"></div>
+      </div>
+      <div class="group-form">
+        <!-- <span class="text-danger">*</span> -->
+        <input type="number" name="numtel" id="numtel" required
+          [class.is-invalid]="numtel.invalid && numtel.touched " [class.is-valid]="numtel.valid"
+          #numtel="ngModel" [(ngModel)]="user.numtel" tabindex="2" class="form-control" placeholder="Telephone">
+        <small class="text-danger" [class.d-none]=" numtel.untouched || numtel.valid"> Veuillez saisir votre
+          numero de téléphone </small>
+          <div class="icon-user"></div>
+      </div>
+
+
+      <div class="group-form">
+        <!-- <span class="text-danger">*</span> -->
+        <input type="email" name="email" id="email" (keyup)="emailVerif(email.value)" required
+          [class.is-invalid]="emailError || (email.invalid && email.touched ) " [class.is-valid]="email.valid"
+          #email="ngModel" [(ngModel)]="user.email" tabindex="2" class="form-control" placeholder="Email">
+        <div *ngIf="emailError || (email.touched && email.invalid)">
+          <small class="text-danger" [class.d-none]=" email.untouched || email.valid"> Veuillez saisir votre email
+          </small>
+          <small class="text-danger" [class.d-none]="!emailError || email.value == ''"> Veuillez saisir l'email au bon
+            format</small>
+        </div>
+        <div class="icon-mail"></div>
+      </div>
+
+      <div class="group-form">
+        <input type="password" name="password" id="password" (keyup)="passwordLengthVerif(password.value)" required
+        [class.is-invalid]="passError || (password.invalid && password.touched )" [class.is-valid]="password.valid"
+        #password="ngModel" [(ngModel)]="user.password" tabindex="2" class="form-control" placeholder="Password">
+      <div *ngIf="passError || (password.touched && password.invalid)">
+        <small class="text-danger" [class.d-none]="password.untouched || password.valid"> Veuillez remplir ce
+          champ</small>
+        <small class="text-danger" [class.d-none]="!passError || password.value == ''"> Minimun 6 caractéres</small>
+      </div>
+      </div>
+
+
+      <div class="group-form">
+        <input type="password" (keyup)="passwordConfirmVerif(password.value, passwordC.value)" required
+            [class.is-invalid]="passConfError || (passwordC.invalid && passwordC.touched )"
+            [class.is-valid]="passwordC.valid" class="form-control" id="passwordC" #passwordC="ngModel"
+            [(ngModel)]="passConf" placeholder="Confirmer le password" name="passwordC">
+          <div *ngIf="passConfError || (passwordC.touched && passwordC.invalid)">
+            <small class="text-danger" [class.d-none]=" passwordC.untouched || passwordC.valid"> Veuillez confirmer
+              votre password </small>
+            <small class="text-danger" [class.d-none]="!passConfError || passwordC.value == ''">les deux passwords ne
+              sont pas identiques</small>
+          </div>
+      </div>
+
+
+
+      <div class="group-form">
+        <input [disabled]="userForm.form.invalid || passConfError || emailError" type="submit"  tabindex="4" class="form-control btn btn-success"  value="Valider">
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
