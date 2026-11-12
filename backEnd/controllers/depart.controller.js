@@ -1,0 +1,10 @@
+const departService=require("../services/depart.service");
+const { add,deleteDepart, get,getAll, updateDepart}=require("../services/depart.service");
+const express=require("express");
+const routes=express.Router();
+routes.post("/add",add);
+routes.get("/all",getAll);
+routes.get("/:id",get);
+routes.delete("/delete",deleteDepart);
+routes.put("/update",updateDepart);
+module.exports = routes;

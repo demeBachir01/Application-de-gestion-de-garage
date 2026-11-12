@@ -1,0 +1,10 @@
+const bagageService=require("../services/bagage.service");
+const { add,deleteBagage, get,getAll, updateBagage}=require("../services/bagage.service");
+const express=require("express");
+const routes=express.Router();
+routes.post("/add",add);
+routes.get("/all",getAll);
+routes.get("/:id",get);
+routes.delete("/delete",deleteBagage);
+routes.put("/update",updateBagage);
+module.exports = routes;

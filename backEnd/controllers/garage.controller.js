@@ -1,0 +1,10 @@
+const garageService=require("../services/garage.service");
+const { add,deleteGarage, get,getAll, updateGarage}=require("../services/garage.service");
+const express=require("express");
+const routes=express.Router();
+routes.post("/add",add);
+routes.get("/all",getAll);
+routes.get("/:id",get);
+routes.delete("/delete",deleteGarage);
+routes.put("/update",updateGarage);
+module.exports = routes;

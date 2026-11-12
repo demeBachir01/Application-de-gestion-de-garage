@@ -1,0 +1,10 @@
+const ChauffeurService=require("../services/chauffeur.service");
+const { add,deleteChauffeur, get,getAll, updateChauffeur}=require("../services/chauffeur.service");
+const express=require("express");
+const routes=express.Router();
+routes.post("/add",add);
+routes.get("/all",getAll);
+routes.get("/:id",get);
+routes.delete("/delete",deleteChauffeur);
+routes.put("/update",updateChauffeur);
+module.exports = routes;
